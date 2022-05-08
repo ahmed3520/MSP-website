@@ -5,13 +5,15 @@ import Event from '../utils/Event'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Committe from '../utils/Committe'
+import { useSelector } from 'react-redux';
 const Home = () => {
   const [data,setData] = useState()
   const [committes,setCommittes] = useState()
   const[error, setError] = useState()
   const [loading, setLoading] = useState()
-
-  useEffect(() => {
+  const posts = useSelector((state) => state);
+  console.log('posts', posts)
+ /*  useEffect(() => {
     axios('http://127.0.0.1:8080/events/all',{
       method:'GET',
    
@@ -34,7 +36,7 @@ const Home = () => {
     console.log(err)
     setError(err)
   });
-  }, [])
+  }, [])*/
   console.log('data', committes)
   return (
       <>
@@ -62,11 +64,12 @@ const Home = () => {
               <button className='btn btn-outline-primary'>View More Events</button>
             </Link>
             </div>
-            { data?
+            { /*data?
               data.map((result, index)=>{
                 return <Event key={index}  image={result.image} name={result.name} desc={result.description} date={result.date} id={result._id} location={result.location}/>
               })
               :<></>
+              */
             }
           </div>
           <div className="committe">

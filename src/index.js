@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import {Home, Aboutus, Contantus, Events,HighBoard} from './components/pages/index';
+import {Home, Aboutus, Contantus, Events,HighBoard, Event} from './components/pages/index';
 
 import reportWebVitals from './reportWebVitals';
 import { 
@@ -10,17 +10,17 @@ import {
   Routes,
   Route,
  } from "react-router-dom";
+ import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { reducers } from './reducers';
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
+console.log(store)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="events" element={<Events />} />
-      <Route path="about" element={ <Aboutus/>}  />
-      <Route path="contact" element={<Contantus/>} />
-      <Route path="highboard" element={<HighBoard />} />
-    </Routes>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <App/>
+  </Provider>,
 );
 
 // If you want to start measuring performance in your app, pass a function

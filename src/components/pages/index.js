@@ -3,5 +3,5 @@ import HighBoard from "./HighBoard";
 import Home from "./Home";
 import Events from "./Events";
 import Aboutus from "./Aboutus";
-
-export {Home, Contantus, HighBoard, Aboutus, Events}
+import Event from "./Event";
+export {Home, Contantus, HighBoard, Aboutus, Events, Event}
